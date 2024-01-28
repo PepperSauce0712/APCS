@@ -10,7 +10,16 @@ using namespace std;
 class Solution {
 public:
     vector<int> twoSum(vector<int>& nums, int target) {
-        
+        unordered_map<int, int> valtoIndex;
+        for(int i = 0; i<nums.size(); i++){
+            int need = target - nums[i];
+            if(valtoIndex.count(need)){
+                return vector<int>{valtoIndex[need], i};
+            }
+
+            valtoIndex[nums[i]] = i;
+        }
+        return vector<int>{};
     }
 };
 // @lc code=end
